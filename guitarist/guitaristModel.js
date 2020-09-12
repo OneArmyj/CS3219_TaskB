@@ -1,24 +1,24 @@
-// contactModel.js
+// guitaristModel.js
 var mongoose = require('mongoose');
 // Setup schema
-var contactSchema = mongoose.Schema({
+var guitaristSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    email: {
+    guitar: {
         type: String,
         required: true
     },
-    gender: String,
-    phone: String,
+    age: String,
+    band: String,
     create_date: {
         type: Date,
         default: Date.now
     }
 });
-// Export Contact model
-var Contact = module.exports = mongoose.model('contact', contactSchema);
+// Export guitarist model
+var Guitarist = module.exports = mongoose.model('guitarist', guitaristSchema);
 module.exports.get = function (callback, limit) {
-    Contact.find(callback).limit(limit);
+    Guitarist.find(callback).limit(limit);
 }

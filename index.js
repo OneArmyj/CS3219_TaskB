@@ -22,8 +22,6 @@ app.use(bodyParser.json());
 // Use Api routes in the App, sets the route for the module apiRoutes
 app.use('/api', apiRoutes)
 
-
-
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/guitarist', { useNewUrlParser: true });
 var db = mongoose.connection;
