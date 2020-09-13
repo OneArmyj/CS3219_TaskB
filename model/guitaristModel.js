@@ -1,6 +1,8 @@
 // guitaristModel.js
 var mongoose = require('mongoose');
+
 // Setup schema
+// _id is set to true by default
 var guitaristSchema = mongoose.Schema({
     name: {
         type: String,
@@ -10,13 +12,17 @@ var guitaristSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    age: String,
+    age: {
+        type: String,
+        required: true,
+    },
     band: String,
     create_date: {
         type: Date,
         default: Date.now
     }
 });
+
 // Export guitarist model
 var Guitarist = module.exports = mongoose.model('guitarist', guitaristSchema);
 module.exports.get = function (callback, limit) {

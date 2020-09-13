@@ -11,14 +11,19 @@ let apiRoutes = require("./api-routes")
 let bodyParser = require('body-parser');
 // Import Mongoose, it's a nodejs package to handle business logic of MongoDB
 let mongoose = require('mongoose');
+
 // Initialize the app
 let app = express();
 
-// Configure bodyparser to handle post requests, this must come before apiRoute, idk
+// Configure bodyparser to handle post requests, this must come before apiRoute
+// need to use bodyParser if we want form data to be available in req.body
+// bodyParser.urlencoded exposes the resulting object (containing the keys and values) on req.body
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+// bodyParser.json parses the text as JSON and exposes the resulting object on req.body
 app.use(bodyParser.json());
+
 // Use Api routes in the App, sets the route for the module apiRoutes
 app.use('/api', apiRoutes)
 
@@ -34,8 +39,10 @@ else
 // Setup server port
 var port = process.env.PORT || 8080;
 // respond with message when a GET request is made to homepage
-app.get('/', (req, res) => res.send('Hello World with Express and Nodemon'));
+app.get('/', (req, res) => res.send('Guitarist Bio with Express and Nodemon'));
 // Launch app to listen to specified port
 app.listen(port, function () {
     console.log("Running Guitarist on port " + port);
 });
+
+module.exports = app;
