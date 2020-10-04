@@ -19,6 +19,7 @@ var guitaristSchema = mongoose.Schema({
     band: String,
     create_date: {
         type: Date,
+        required: true,
         default: Date.now
     }
 });

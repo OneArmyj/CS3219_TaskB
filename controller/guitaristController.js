@@ -24,7 +24,7 @@ exports.index = function (req, res) {
 // Postman: POST to http://localhost:8080/api/guitarists, with BODY and key:value
 exports.new = function (req, res) {
     var guitarist = new Guitarist();
-    guitarist.name = req.body.name ? req.body.name.trim() : guitarist.name;
+    guitarist.name = req.body.name.trim();
     guitarist.guitar = req.body.guitar.trim();
     guitarist.band = req.body.band.trim();
     guitarist.age = req.body.age.trim();
