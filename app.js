@@ -44,8 +44,6 @@ if (!db)
 else
     console.log("Db connected successfully")
 
-// respond with message when a GET request is made to homepage
-app.get('/', (req, res) => res.send('Guitarist Bio with Express and Nodemon'));
 app.use(express.static('build'));
 
 module.exports = app;
