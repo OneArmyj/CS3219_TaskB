@@ -10,9 +10,10 @@ cache:
 services: mongodb
 jobs:
   include:
-    - stage: "API tests"
+    - stage: "API Testing"
       script: npm run test
 
+    - stage: "Deploy to Heroku"
       deploy:
         provider: heroku
         api_key: b9f62087-1916-4eec-ad15-dc7d296f7299
