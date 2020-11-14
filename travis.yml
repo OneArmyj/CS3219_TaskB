@@ -1,0 +1,14 @@
+
+language: node_js
+node_js:
+  - stable
+env:
+  - ENVIRONMENT=DEVELOPMENT
+cache:
+  directories:
+    - node_modules
+services: mongodb
+jobs:
+  include:
+    - stage: "API tests"
+      script: npm run test
