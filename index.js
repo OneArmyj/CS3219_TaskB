@@ -42,7 +42,7 @@ else
     console.log("Db connected successfully")
 
 // Setup server port
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3001;
 // respond with message when a GET request is made to homepage
 app.get('/', (req, res) => res.send('Guitarist Bio with Express and Nodemon'));
 // Launch app to listen to specified port
