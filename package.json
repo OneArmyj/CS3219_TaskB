@@ -4,6 +4,7 @@
   "description": "A web application to implement RESTful API to display guitarist information using MVC framework",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon start",
     "test": "mocha --require babel-register tests/*.js --exit"
   },
   "keywords": [
