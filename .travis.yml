@@ -14,6 +14,11 @@ jobs:
       script: npm run test
 
     - stage: "Deploy to Heroku"
+      script: cd view && npm i && npm run build --prod && cp -r build ../ && cd ../
+      cache:
+        directories:
+          - node_modules
+
       deploy:
         provider: heroku
         api_key: b9f62087-1916-4eec-ad15-dc7d296f7299

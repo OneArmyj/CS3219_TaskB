@@ -50,4 +50,6 @@ app.listen(port, function () {
     console.log("Running Guitarist on port " + port);
 });
 
+app.use(express.static('build'));
+
 module.exports = app;
