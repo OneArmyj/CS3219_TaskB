@@ -1,7 +1,7 @@
 // Import the dependencies for testing
 var chai = require('chai');
 var chaiHttp = require('chai-http');
-var app = require('../index');
+var app = require('../app');
 var guitarists = require('../dummy/guitarists');
 
 // Configure chai. an assertion library for node and browser, can be paired with any JS testing framework (like Mocha)

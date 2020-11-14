@@ -10,7 +10,7 @@ const GuitaristCard = ({name, guitar, band, age}) => {
     }
 
     return (
-        <div>
+        <div style={{paddingBottom: "5px"}}>
             <div>
                 Guitarist: {name}, Guitar: {guitar}, Band:{band}, age:{age} &nbsp
                 <button onClick={onClickHandler}>Delete guitarist</button>

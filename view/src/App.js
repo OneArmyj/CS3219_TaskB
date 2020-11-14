@@ -14,7 +14,7 @@ const App = () => {
   })
 
   return (
-    <div>
+    <div style={{textAlign: "center"}}>
       {guitarists.map(x => <GuitaristCard name={x.name} guitar={x.guitar} band={x.band} age={x.age}/>)}
       <GuitaristForm />
     </div>
