@@ -12,3 +12,12 @@ jobs:
   include:
     - stage: "API tests"
       script: npm run test
+
+      deploy:
+        provider: heroku
+        api_key: b9f62087-1916-4eec-ad15-dc7d296f7299
+        app: intense-reef-03949
+      
+      on:
+        repo: OneArmyj/CS3219_TaskB
+      skip_cleanup: true
