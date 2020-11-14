@@ -29,11 +29,9 @@ app.use(bodyParser.json());
 app.use('/api', apiRoutes)
 
 // Connect to Mongoose and set connection variable
-const mongoURL = process.env.ENVIRONMENT === "DEVELOPMENT"
+const mongoURL = process.env.ENVIRONMENT === "PRODUCTION"
     ? process.env.mongoURL
     : 'mongodb://localhost/guitarist'
-
-console.log(mongoURL);
 
 mongoose.connect(mongoURL , { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
