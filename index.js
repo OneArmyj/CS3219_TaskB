@@ -1,3 +1,4 @@
+require('dotenv').config();
 /*
 FileName: index.js
 use nodemon to watch changes in files to update express server
@@ -28,11 +29,13 @@ app.use(bodyParser.json());
 app.use('/api', apiRoutes)
 
 // Connect to Mongoose and set connection variable
-const mongoURL = process.env.ENVIRONMENT === "PRODUCTION"
+const mongoURL = process.env.ENVIRONMENT === "DEVELOPMENT"
     ? process.env.mongoURL
     : 'mongodb://localhost/guitarist'
-    
-mongoose.connect(mongoURL , { useNewUrlParser: true });
+
+console.log(mongoURL);
+
+mongoose.connect(mongoURL , { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 // Added check for DB connection
 if (!db)
