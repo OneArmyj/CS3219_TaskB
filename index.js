@@ -28,7 +28,12 @@ app.use(bodyParser.json());
 app.use('/api', apiRoutes)
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/guitarist', { useNewUrlParser: true });
+const mongoDbUri = process.env.ENVIRONMENT === "PRODUCTION"
+  ? process.env.MONGOD_URI
+  :"mongodb://localhost/guitarist"
+
+mongoose.connect(mongoDbUri, { useNewUrlParser: true });
+
 var db = mongoose.connection;
 // Added check for DB connection
 if (!db)
@@ -41,7 +46,8 @@ var port = process.env.PORT || 8080;
 // respond with message when a GET request is made to homepage
 app.get('/', (req, res) => res.send('Guitarist Bio with Express and Nodemon'));
 // Launch app to listen to specified port
-app.listen(port, function () {
+const appPort = process.env.PORT || 3001;
+app.listen(appPort, function () {
     console.log("Running Guitarist on port " + port);
 });
 
