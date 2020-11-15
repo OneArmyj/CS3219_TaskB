@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import api from './api'
-import { Modal, Form, ModalBody, ModalHeader, Button } from 'reactstrap'
+import { Form, Button } from 'reactstrap'
 
 const GuitaristForm = () => {
     const [name, setName] = useState("");
