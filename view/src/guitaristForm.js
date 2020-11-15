@@ -30,8 +30,8 @@ const GuitaristForm = () => {
                 .then(res => console.log(res))
                 .catch(err => console.warn(err))
         } else {
-            const linkExt = name.toLowerCase().replace(/\W/g, "%20");
-            api.post(`/api/guitarists/${linkExt}`, { name: name, guitar: guitar, band: band, age: age })
+            const linkExt = name.replace(/\W/g, "%20");
+            api.put(`/api/guitarists/${linkExt}`, { name: name, guitar: guitar, band: band, age: age })
                 .then(res => console.log(res))
                 .catch(err => console.warn(err))
         }
