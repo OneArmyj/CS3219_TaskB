@@ -42,7 +42,7 @@ const GuitaristForm = ({ guitarists, setGuitarists }) => {
                 setError("Guitarists does not exist, hence cannot be edited.");
             } else {
                 const linkExt = name.replace(/\W/g, "%20");
-                await api.put(`/api/guitarists/${linkExt}`, { name: name, guitar: guitar, band: band, age: age })
+                await api.put(`/api/guitarists/${linkExt}`, { name: newName, guitar: guitar, band: band, age: age })
                     .then(res => {
                         api.get("/api/guitarists").then(res => {
                             setGuitarists(res.data.data)
