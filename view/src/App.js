@@ -11,7 +11,7 @@ const App = () => {
     api.get("/api/guitarists").then(res => {
       setGuitarists(res.data.data);
     })
-  }, [guitarists])
+  }, [])
 
   return (
     <div style={{textAlign: "center"}}>
