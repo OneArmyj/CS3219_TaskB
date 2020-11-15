@@ -44,6 +44,6 @@ if (!db)
 else
     console.log("Db connected successfully")
 
-app.use(express.static('build'));
+app.use("/", express.static('build'));
 
 module.exports = app;
