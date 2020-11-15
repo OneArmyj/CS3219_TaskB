@@ -13,6 +13,7 @@ let bodyParser = require('body-parser');
 // Import Mongoose, it's a nodejs package to handle business logic of MongoDB
 let mongoose = require('mongoose');
 let cors = require('cors');
+let path = require('path')
 
 // Initialize the app
 let app = express();
