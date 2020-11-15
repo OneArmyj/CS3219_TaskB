@@ -2,39 +2,55 @@ import React, { useState } from 'react'
 import api from './api'
 import { Form, Button } from 'reactstrap'
 
-const GuitaristForm = () => {
+const GuitaristForm = ({ guitarists, setGuitarists }) => {
     const [name, setName] = useState("");
     const [newName, setNewName] = useState("");
     const [guitar, setGuitar] = useState("");
     const [band, setBand] = useState("");
     const [age, setAge] = useState("");
     const [type, setType] = useState("add");
+    const [error, setError] = useState("");
 
     const clearInput = () => {
         setName("");
+        setNewName("");
         setGuitar("");
         setBand("");
         setAge("");
     }
 
     const onClickHandler = () => {
+        setError("");
         if (type === "add") {
             setType("edit");
         } else {
             setType("add")
         }
     }
-    const onSubmitHandler = e => {
+    const onSubmitHandler = async e => {
         e.preventDefault();
         if (type === "add") {
-            api.post('/api/guitarists', { name: name, guitar: guitar, band: band, age: age })
-                .then(res => console.log(res))
+            await api.post('/api/guitarists', { name: name, guitar: guitar, band: band, age: age })
+                .then(res => {
+                    api.get("/api/guitarists").then(res => {
+                        setGuitarists(res.data.data)
+                    })
+                })
                 .catch(err => console.warn(err))
         } else {
-            const linkExt = name.replace(/\W/g, "%20");
-            api.put(`/api/guitarists/${linkExt}`, { name: name, guitar: guitar, band: band, age: age })
-                .then(res => console.log(res))
-                .catch(err => console.warn(err))
+            if (guitarists.filter(x => x.name === name).length === 0) {
+                setError("Guitarists does not exist, hence cannot be edited.");
+            } else {
+                const linkExt = name.replace(/\W/g, "%20");
+                await api.put(`/api/guitarists/${linkExt}`, { name: name, guitar: guitar, band: band, age: age })
+                    .then(res => {
+                        api.get("/api/guitarists").then(res => {
+                            setGuitarists(res.data.data)
+                            setError("")
+                        })
+                    })
+                    .catch(err => console.warn(err));
+            }
         }
 
         clearInput();
@@ -42,7 +58,7 @@ const GuitaristForm = () => {
 
     return (
 
-        <Form  className="pt-3" onSubmit={onSubmitHandler} style={{width: "40%", margin: "auto", textAlign: "left"}}>
+        <Form className="pt-3" onSubmit={onSubmitHandler} style={{ width: "40%", margin: "auto", textAlign: "left" }}>
             {type === "add"
                 ? (
                     <div className="form-group">
@@ -55,6 +71,7 @@ const GuitaristForm = () => {
                         <div className="form-group">
                             <label>Name of guitarist to edit</label>
                             <input className="form-control" autoFocus required value={name} onChange={e => setName(e.target.value)} />
+                            <p style={{color: "red"}}>{error}</p>
                         </div>
                         <div className="form-group">
                             <label>Name of new guitarist</label>

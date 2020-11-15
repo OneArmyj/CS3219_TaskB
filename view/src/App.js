@@ -15,8 +15,8 @@ const App = () => {
 
   return (
     <div style={{textAlign: "center"}}>
-      {guitarists.map(x => <GuitaristCard name={x.name} guitar={x.guitar} band={x.band} age={x.age} key={x._id}/>)}
-      <GuitaristForm />
+      {guitarists.map(x => <GuitaristCard name={x.name} guitar={x.guitar} band={x.band} age={x.age} key={x._id} setGuitarists={setGuitarists}/>)}
+      <GuitaristForm guitarists={guitarists} setGuitarists={setGuitarists}/>
     </div>
   );
 }

@@ -3,11 +3,13 @@ import api from './api'
 import {Card, Button} from 'reactstrap'
 
 
-const GuitaristCard = ({name, guitar, band, age}) => {
+const GuitaristCard = ({name, guitar, band, age, setGuitarists}) => {
     
-    const onClickHandler = () => {
+    const onClickHandler = async () => {
         const linkExt = name.replace(/\W/g, "-");
-        api.delete(`/api/guitarists/${linkExt}`).then(res  => console.log(res))
+        await api.delete(`/api/guitarists/${linkExt}`).then(res => {
+            api.get("/api/guitarists").then(res => setGuitarists(res.data.data));
+        })
     }
 
     return (
