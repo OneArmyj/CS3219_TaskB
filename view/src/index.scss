@@ -1,0 +1,28 @@
+  
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap');
+
+// Base Colors
+$blue: #48466d;
+$indigo: #4b296b;
+$purple: #c49991;
+$pink: #e83e8c;
+$orange: #fd7e14;
+$teal: #226f54;
+$cyan: #87c38f;
+
+// Theme Colors
+$primary: $blue;
+$secondary: #3d84a8;
+$info: $indigo;
+$light: #eeebd3;
+$dark: #1f1923;
+
+// Typography
+$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  'Liberation Mono', 'Courier New', monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+@import 'node_modules/bootstrap/scss/bootstrap';

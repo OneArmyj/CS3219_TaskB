@@ -1,5 +1,6 @@
 import React from 'react'
 import api from './api'
+import {Card, Button} from 'reactstrap'
 
 
 const GuitaristCard = ({name, guitar, band, age}) => {
@@ -10,13 +11,13 @@ const GuitaristCard = ({name, guitar, band, age}) => {
     }
 
     return (
-        <div style={{paddingBottom: "5px"}}>
+        <Card className="py-3">
             <div>
                 Guitarist: {name}, Guitar: {guitar}, Band: {band}, age: {age} &nbsp;
-                <button onClick={onClickHandler}>Delete guitarist</button>
+                <Button className="btn-sm" color="danger" onClick={onClickHandler}>Delete guitarist</Button>
             </div>
             
-        </div>
+        </Card>
     )
 }
 

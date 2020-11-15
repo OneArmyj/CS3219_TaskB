@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import api from './api'
+import { Modal, Form, ModalBody, ModalHeader, Button } from 'reactstrap'
 
 const GuitaristForm = () => {
     const [name, setName] = useState("");
@@ -40,56 +41,55 @@ const GuitaristForm = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmitHandler}>
+
+        <Form  className="pt-3" onSubmit={onSubmitHandler} style={{width: "40%", margin: "auto", textAlign: "left"}}>
+            {type === "add"
+                ? (
+                    <div className="form-group">
+                        <label>Name of guitarist to add</label>
+                        <input className="form-control" autoFocus required value={name} onChange={e => setName(e.target.value)} />
+                    </div>
+                )
+                : (
+                    <>
+                        <div className="form-group">
+                            <label>Name of guitarist to edit</label>
+                            <input className="form-control" autoFocus required value={name} onChange={e => setName(e.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label>Name of new guitarist</label>
+                            <input className="form-control" required value={newName} onChange={e => setNewName(e.target.value)} />
+                        </div>
+                    </>
+                )}
+
+            <div className="form-group">
+                <label>What is his signature guitar?</label>
+                <input className="form-control" required value={guitar} onChange={e => setGuitar(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <label>What is his band?</label>
+                <input className="form-control" required value={band} onChange={e => setBand(e.target.value)} />
+            </div>
+            <div className="form-group">
+                <label>What is his age?</label>
+                <input className="form-control" required value={age} onChange={e => setAge(e.target.value)} />
+            </div>
+            <div className="form-group d-flex justify-content-between" >
                 {type === "add"
                     ? (
-                        <div>
-                            <label>Name of guitarist to add</label>
-                            <input required value={name} onChange={e => setName(e.target.value)} />
-                        </div>
+                        <Button type="submit">
+                            Add Guitarist
+                        </Button>
                     )
                     : (
-                        <>
-                            <div>
-                                <label>Name of guitarist to edit</label>
-                                <input required value={name} onChange={e => setName(e.target.value)} />
-                            </div>
-                            <div>
-                                <label>Name of new guitarist</label>
-                                <input required value={newName} onChange={e => setNewName(e.target.value)} />
-                            </div>
-                        </>
+                        <Button type="submit">
+                            Edit Guitarist
+                        </Button>
                     )}
-
-                <div>
-                    <label>What is his signature guitar?</label>
-                    <input required value={guitar} onChange={e => setGuitar(e.target.value)} />
-                </div>
-                <div>
-                    <label>What is his band?</label>
-                    <input required value={band} onChange={e => setBand(e.target.value)} />
-                </div>
-                <div>
-                    <label>What is his age?</label>
-                    <input required value={age} onChange={e => setAge(e.target.value)} />
-                </div>
-                <div>
-                    {type === "add"
-                        ? (
-                            <button type="submit">
-                                Add Guitarist
-                            </button>
-                        )
-                        : (
-                            <button type="submit">
-                                Edit Guitarist
-                            </button>
-                        )}
-                    <button onClick={onClickHandler}>Toggle between add or edit</button>
-                </div>
-            </form>
-        </div>
+                <Button onClick={onClickHandler}>Toggle between add or edit</Button>
+            </div>
+        </Form>
     )
 }
 
